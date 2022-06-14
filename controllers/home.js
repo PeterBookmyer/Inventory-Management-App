@@ -7,13 +7,13 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: Item,
-          attributes: ["item.name", "description", "price"],
+          attributes: ["name", "description", "price"],
         },
       ],
     });
 
-    const gallery = inventoryData.map((gallery) =>
-      gallery.get({ plain: true })
+    const inventoryItem = Inventory.map((inventoryItem) =>
+      inventoryItem.get({ plain: true })
     );
 
     req.session.save(() => {
@@ -35,22 +35,20 @@ router.get("/", async (req, res) => {
 });
 
 // GET one gallery
-router.get("/gallery/:id", async (req, res) => {
+router.get("/inventory/:id", async (req, res) => {
   try {
     const inventoryData = await Inventory.findByPk(req.params.id, {
       include: [
         {
           model: Item,
-          attributes: ["id", "itemname", "description", "price"],
+          attributes: ["id", "name", "quantity", "COG", "price"],
         },
       ],
     });
 
-    const gallery = inventory.get({ plain: true });
-    res.render("gallery", {
-      gallery,
-      // We are not incrementing the 'countVisit' session variable here
-      // but simply sending over the current 'countVisit' session variable to be rendered
+    const inventory = Inventory.get({ plain: true });
+    res.render("inventory", {
+      inventory,
       countVisit: req.session.countVisit,
     });
   } catch (err) {
@@ -59,7 +57,7 @@ router.get("/gallery/:id", async (req, res) => {
   }
 });
 
-// GET one painting
+// GET one item
 router.get("/item/:id", async (req, res) => {
   try {
     const itemData = await Item.findByPk(req.params.id);
@@ -68,8 +66,6 @@ router.get("/item/:id", async (req, res) => {
 
     res.render("item", {
       item,
-      // We are not incrementing the 'countVisit' session variable here
-      // but simply sending over the current 'countVisit' session variable to be rendered
       countVisit: req.session.countVisit,
     });
   } catch (err) {
