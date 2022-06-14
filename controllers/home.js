@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    const gallery = inventoryData.map((gallery) =>
+    const inventoryItem = inventoryData.map((gallery) =>
       gallery.get({ plain: true })
     );
 
@@ -46,9 +46,9 @@ router.get("/gallery/:id", async (req, res) => {
       ],
     });
 
-    const gallery = inventory.get({ plain: true });
-    res.render("gallery", {
-      gallery,
+    const inventory = Inventory.get({ plain: true });
+    res.render("inventory", {
+      inventory,
       // We are not incrementing the 'countVisit' session variable here
       // but simply sending over the current 'countVisit' session variable to be rendered
       countVisit: req.session.countVisit,
@@ -59,7 +59,7 @@ router.get("/gallery/:id", async (req, res) => {
   }
 });
 
-// GET one painting
+// GET one item
 router.get("/item/:id", async (req, res) => {
   try {
     const itemData = await Item.findByPk(req.params.id);
