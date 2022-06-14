@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopKeep App</title>
+    <link rel="stylesheet" type="text/css" href="/css/jass.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  </head>
+
+  <body>
+    {{! title of app }}
+    <header>
+      ShopKeep Inventory Manager
+    </header>
+    {{! navigation shows when logged in }}
+    {{#if loggedIn}}
+      <nav>
+        <a href="#">View Inventory</a>
+        <a href="#">Add Inventory</a>
+        <a href="#">Update Inventory</a>
+      </nav>
+    {{else}}
+      <h2>Log In to Start Your ShopKeep Journey</h2>
+    {{/if}}
+    {{! user logo }}
+    <div>
+      <img src="tbd" alt="logo" />
+    </div>
+    <main>
+      <div>
+        {{{body}}}
+      </div>
+    </main>
+  </body>
+</html>
