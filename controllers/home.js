@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
       }
 
       res.render("homepage", {
-        galleries,
+        inventoryItem,
         countVisit: req.session.countVisit,
       });
     });
