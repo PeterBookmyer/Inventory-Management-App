@@ -2,7 +2,7 @@ const Users = require("./Users");
 const Pricing = require("./Pricing");
 const Inventory = require("./Inventory");
 
-Inventory.hasMany(Pricing, {
+Inventory.hasOne(Pricing, {
   foreignKey: "inventory_id",
 });
 

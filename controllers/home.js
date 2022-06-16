@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
     const inventoryData = await Inventory.findAll({
       include: [
         {
-          model: Item,
+          model: Pricing,
           attributes: ["name", "description", "price"],
         },
       ],
