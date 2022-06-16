@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Pricing, Inventory, Users } = require("../models");
 const withAuth = require("../utils/auth");
 
-
 router.get("/users", withAuth, async (req, res) => {
   try {
     const userData = await Users.findAll({
@@ -15,6 +14,7 @@ router.get("/users", withAuth, async (req, res) => {
             "email",
             "username",
             "password",
+            "admin",
           ],
         },
       ],
@@ -27,7 +27,7 @@ router.get("/users", withAuth, async (req, res) => {
     res.redirect("login");
   }
 });
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/users/:id", withAuth, async (req, res) => {
   try {
     const oneUser = await Users.findOne({
       where: { id: req.params.id },
@@ -40,6 +40,7 @@ router.get("/:id", withAuth, async (req, res) => {
             "email",
             "username",
             "password",
+            "admin",
           ],
         },
       ],
@@ -52,13 +53,13 @@ router.get("/:id", withAuth, async (req, res) => {
     res.redirect("login");
   }
 }),
-  router.get("/", async (req, res) => {
+  router.get("/inventory", async (req, res) => {
     try {
       const inventoryData = await Inventory.findAll({
         include: [
           {
-            model: Item,
-            attributes: ["name", "description", "price"],
+            model: Pricing,
+            attributes: ["cost", "sales_price", "order_link", "inventory_id"],
           },
         ],
       });
@@ -88,11 +89,12 @@ router.get("/:id", withAuth, async (req, res) => {
 // GET one item
 router.get("/inventory/:id", async (req, res) => {
   try {
-    const inventoryData = await Inventory.findByPk(req.params.id, {
+    const inventoryData = await Inventory.findOne(req.params.id, {
       include: [
+        { attributes: ["name", "image_file", "current_stock"] },
         {
-          model: Item,
-          attributes: ["id", "name", "quantity", "COG", "price"],
+          model: Pricing,
+          attributes: ["cost", "sales_price", "order_link", "inventory_id"],
         },
       ],
     });
@@ -100,23 +102,6 @@ router.get("/inventory/:id", async (req, res) => {
     const inventory = Inventory.get({ plain: true });
     res.render("inventory", {
       inventory,
-      countVisit: req.session.countVisit,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// GET one item
-router.get("/inventory/:id", async (req, res) => {
-  try {
-    const itemData = await Item.findByPk(req.params.id);
-
-    const item = itemData.get({ plain: true });
-
-    res.render("item", {
-      item,
       countVisit: req.session.countVisit,
     });
   } catch (err) {
