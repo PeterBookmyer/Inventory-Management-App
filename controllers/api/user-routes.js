@@ -43,67 +43,18 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.get("/users", withAuth, async (req, res) => {
+router.post("/new", withAuth, async (req, res) => {
   try {
-    const userData = await Users.findAll({
-      include: [
-        {
-          model: Users,
-          attributes: [
-            "first_name",
-            "last_name",
-            "email",
-            "username",
-            "password",
-          ],
-        },
-      ],
+    const newUser = await Users.create(req.body).then((user) => {
+      return Users.afterCreate(newUser);
     });
-    res.render(userData, {
+    res.render(newUser, {
       layout: "dashboard",
-      Users,
     });
   } catch (err) {
-    res.redirect("login");
-  }
-});
-router.get("/:id", withAuth, async (req, res) => {
-  try {
-    const oneUser = await Users.findOne({
-      where: { id: req.params.id },
-      include: [
-        {
-          model: Users,
-          attributes: [
-            "first_name",
-            "last_name",
-            "email",
-            "username",
-            "password",
-          ],
-        },
-      ],
-    });
-    res.render(oneUser, {
-      layout: "dashboard",
-      Users,
-    });
-  } catch (err) {
-    res.redirect("login");
+    res.redirect("dashboard");
   }
 }),
-  router.post("/new", withAuth, async (req, res) => {
-    try {
-      const newUser = await Users.create(req.body).then((user) => {
-        return Users.afterCreate(newUser);
-      });
-      res.render(newUser, {
-        layout: "dashboard",
-      });
-    } catch (err) {
-      res.redirect("dashboard");
-    }
-  }),
   router.put("/edit/:id", withAuth, async (req, res) => {
     try {
       const update = await Users.update(req.body, {

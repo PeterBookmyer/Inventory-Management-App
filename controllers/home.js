@@ -1,40 +1,89 @@
 const router = require("express").Router();
 const { Pricing, Inventory, Users } = require("../models");
 
-router.get("/", async (req, res) => {
+router.get("/users", withAuth, async (req, res) => {
   try {
-    const inventoryData = await Inventory.findAll({
+    const userData = await Users.findAll({
       include: [
         {
-          model: Item,
-          attributes: ["name", "description", "price"],
+          model: Users,
+          attributes: [
+            "first_name",
+            "last_name",
+            "email",
+            "username",
+            "password",
+          ],
         },
       ],
     });
-
-    const inventoryItem = Inventory.map((inventoryItem) =>
-      inventoryItem.get({ plain: true })
-    );
-
-    req.session.save(() => {
-      if (req.session.countVisit) {
-        req.session.countVisit++;
-      } else {
-        req.session.countVisit = 1;
-      }
-
-      res.render("homepage", {
-        inventoryItem,
-        countVisit: req.session.countVisit,
-      });
+    res.render(userData, {
+      layout: "dashboard",
+      Users,
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.redirect("login");
   }
 });
+router.get("/:id", withAuth, async (req, res) => {
+  try {
+    const oneUser = await Users.findOne({
+      where: { id: req.params.id },
+      include: [
+        {
+          model: Users,
+          attributes: [
+            "first_name",
+            "last_name",
+            "email",
+            "username",
+            "password",
+          ],
+        },
+      ],
+    });
+    res.render(oneUser, {
+      layout: "dashboard",
+      Users,
+    });
+  } catch (err) {
+    res.redirect("login");
+  }
+}),
+  router.get("/", async (req, res) => {
+    try {
+      const inventoryData = await Inventory.findAll({
+        include: [
+          {
+            model: Item,
+            attributes: ["name", "description", "price"],
+          },
+        ],
+      });
 
-// GET one gallery
+      const inventoryItem = Inventory.map((inventoryItem) =>
+        inventoryItem.get({ plain: true })
+      );
+
+      req.session.save(() => {
+        if (req.session.countVisit) {
+          req.session.countVisit++;
+        } else {
+          req.session.countVisit = 1;
+        }
+
+        res.render("homepage", {
+          inventoryItem,
+          countVisit: req.session.countVisit,
+        });
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+// GET one item
 router.get("/inventory/:id", async (req, res) => {
   try {
     const inventoryData = await Inventory.findByPk(req.params.id, {
@@ -58,7 +107,7 @@ router.get("/inventory/:id", async (req, res) => {
 });
 
 // GET one item
-router.get("/item/:id", async (req, res) => {
+router.get("/inventory/:id", async (req, res) => {
   try {
     const itemData = await Item.findByPk(req.params.id);
 
