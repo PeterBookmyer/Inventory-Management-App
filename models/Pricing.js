@@ -14,12 +14,10 @@ Pricing.init(
     cost: {
       type: DataTypes.DECIMAL(18, 2),
       allowNull: false,
-      defaultValue: 0,
     },
     sales_price: {
       type: DataTypes.DECIMAL(18, 2),
       allowNull: false,
-      defaultValue: 0,
     },
     order_link: {
       type: DataTypes.STRING,
