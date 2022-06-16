@@ -1,5 +1,10 @@
-
 {
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js"
+  },
+
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
@@ -7,6 +12,7 @@
     "helpers": "^0.0.6",
     "mysql2": "^2.3.3",
     "node": "^17.7.2",
+    "nodemon": "^2.0.16",
     "sequelize": "^6.20.1"
   }
 }
