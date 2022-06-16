@@ -49,34 +49,17 @@ router.get("/users/:id", withAuth, async (req, res) => {
   }
 }),
 
-// get all inventory
 router.get("/inventory", async (req, res) => {
   try {
     const inventoryData = await Inventory.findAll({
       include: [
         {
           model: Pricing,
-          attributes: ["name", "description", "price"],
+          attributes: ["cost", "sales_price", "order_link", "inventory_id"],
         },
       ],
-    });
-
-    const inventoryItem = Inventory.map((inventoryItem) =>
-      inventoryItem.get({ plain: true })
-    );
-
-    req.session.save(() => {
-      if (req.session.countVisit) {
-        req.session.countVisit++;
-      } else {
-        req.session.countVisit = 1;
-      }
-
-      res.render("homepage", {
-        inventoryItem,
-        countVisit: req.session.countVisit,
-      });
-    });
+    // }); //commented out so that server can run
+  });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -86,11 +69,12 @@ router.get("/inventory", async (req, res) => {
 // GET one item
 router.get("/inventory/:id", async (req, res) => {
   try {
-    const inventoryData = await Inventory.findByPk(req.params.id, {
+    const inventoryData = await Inventory.findOne(req.params.id, {
       include: [
+        { attributes: ["name", "image_file", "current_stock"] },
         {
           model: Pricing,
-          attributes: ["id", "name", "current_stock", "cost", "sales_price"],
+          attributes: ["cost", "sales_price", "order_link", "inventory_id"],
         },
       ],
     });
