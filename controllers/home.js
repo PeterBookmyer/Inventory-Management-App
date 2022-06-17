@@ -2,6 +2,13 @@ const router = require("express").Router();
 const { Pricing, Inventory, Users } = require("../models");
 const withAuth = require("../utils/auth");
 
+router.get("/", async (req, res) => {
+  try {
+    res.render("home");
+  } catch (err) {
+    console.log(err);
+  }
+});
 // get all users
 router.get("/users", async (req, res) => {
   try {
@@ -20,30 +27,21 @@ router.get("/users", async (req, res) => {
 });
 
 // get one user
-router.get("/users/:id", withAuth, async (req, res) => {
+router.get("/users/:id", async (req, res) => {
   try {
     const oneUser = await Users.findOne({
       where: { id: req.params.id },
-      include: [
-        {
-          model: Users,
-          attributes: [
-            "first_name",
-            "last_name",
-            "email",
-            "username",
-            "password",
-            "admin",
-          ],
-        },
-      ],
     });
-    res.render(oneUser, {
-      layout: "dashboard",
-      Users,
+
+    const user = oneUser.get({ plain: true });
+    res.render("one_user", {
+      user,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    res.redirect("login");
+    // res.redirect("login");
+    console.log(err);
+    res.status(400).json(err);
   }
 }),
   router.get("/inventory", async (req, res) => {
@@ -55,7 +53,13 @@ router.get("/users/:id", withAuth, async (req, res) => {
             attributes: ["cost", "sales_price", "order_link", "inventory_id"],
           },
         ],
-        // }); //commented out so that server can run
+      });
+      const allInventory = inventoryData.map((inventory) =>
+        inventory.get({ plain: true })
+      );
+      res.render("all_inventory", {
+        allInventory,
+        loggedIn: req.session.loggedIn,
       });
     } catch (err) {
       console.log(err);
@@ -66,19 +70,18 @@ router.get("/users/:id", withAuth, async (req, res) => {
 // GET one item
 router.get("/inventory/:id", async (req, res) => {
   try {
-    const inventoryData = await Inventory.findOne(req.params.id, {
+    const inventoryData = await Inventory.findOne({
+      where: { id: req.params.id },
       include: [
-        { attributes: ["name", "image_file", "current_stock"] },
         {
           model: Pricing,
           attributes: ["cost", "sales_price", "order_link", "inventory_id"],
         },
       ],
     });
-
-    const inventory = Inventory.get({ plain: true });
-    res.render("inventory", {
-      inventory,
+    const inventoryItem = inventoryData.get({ plain: true });
+    res.render("one_inventory", {
+      inventoryItem,
       countVisit: req.session.countVisit,
     });
   } catch (err) {
