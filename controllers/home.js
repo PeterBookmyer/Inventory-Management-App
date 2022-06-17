@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Pricing, Inventory, Users } = require("../models");
-const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
@@ -44,28 +43,29 @@ router.get("/users/:id", async (req, res) => {
     res.status(400).json(err);
   }
 }),
-  router.get("/inventory", async (req, res) => {
-    try {
-      const inventoryData = await Inventory.findAll({
-        include: [
-          {
-            model: Pricing,
-            attributes: ["cost", "sales_price", "order_link", "inventory_id"],
-          },
-        ],
-      });
-      const allInventory = inventoryData.map((inventory) =>
-        inventory.get({ plain: true })
-      );
-      res.render("all_inventory", {
-        allInventory,
-        loggedIn: req.session.loggedIn,
-      });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
+
+router.get("/inventory", async (req, res) => {
+  try {
+    const inventoryData = await Inventory.findAll({
+      include: [
+        {
+          model: Pricing,
+          attributes: ["cost", "sales_price", "order_link", "inventory_id"],
+        },
+      ],
+    });
+    const allInventory = inventoryData.map((inventory) =>
+      inventory.get({ plain: true })
+    );
+    res.render("all_inventory", {
+      allInventory,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // GET one item
 router.get("/inventory/:id", async (req, res) => {

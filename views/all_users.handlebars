@@ -1,6 +1,193 @@
+    <main>
+      <h2 class="logInMsg">Your Current Users</h2>
+      <div>
+        <div class="tablediv">
+          <!-- BUTTON TO ACTIVATE ADD USER MODAL -->
+          <button
+            data-target="modalAddUser"
+            class="btn addbtn modal-trigger waves-effect waves-light btn-large red"
+          >
+            <i class="material-icons left">create</i>
+            Add Item
+          </button>
+          <!-- MODAL -->
+          <div id="modalAddUser" class="modal">
+            <div class="modal-content">
+              <h4>Add User</h4>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="First Name"
+                        id="firstName"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="user_name"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Last Name"
+                        id="lastName"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="salePrice"></label>
+                      <div class="modal-footer">
+                        <a
+                          class="addUserBtn modal-close waves-effect waves-light btn-large red"
+                          href="#!"
+                          ><i class="material-icons left">create</i>Add User
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- INVENTORY TABLE -->
+          <table class="highlight">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Admin</th>
+                <th>Update</th>
+              </tr>
+            </thead>
 
-wtf
-
-{{#each allUsers as |users|}}
-{{first_name}}, {{last_name}}, {{email}},
-{{/each}}
+            <tbody>
+              <tr>
+                <td>Peter B</td>
+                <td>1</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      NO
+                      <input id="adminBtn" type="checkbox" />
+                      <span class="lever"></span>
+                      YES
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    id="updateUserBtn"
+                    class="btn-floating btn-large waves-effect waves-light red"
+                    ><i class="material-icons">add</i></a
+                  >
+                  <div id="modalUpdateUser" class="modal">
+                    <div class="modal-content">
+                      <h4>Update User</h4>
+                      <div class="row">
+                        <form class="col s12">
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input
+                                placeholder="First"
+                                id="firstName"
+                                type="text"
+                                class="validate"
+                              />
+                              <label for="first_name"></label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input
+                                placeholder="Last Name"
+                                id="lastName"
+                                type="text"
+                                class="validate"
+                              />
+                              <label for="lastName"></label>
+                              <div class="modal-footer">
+                                <a
+                                  class="addbtn modal-close waves-effect waves-light btn-large red"
+                                  href="#!"
+                                  ><i class="material-icons left">create</i
+                                  >Update User
+                                </a>
+                              </div>
+                            </div>
+                            </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Casey M</td>
+                <td>2</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      NO
+                      <input id="adminBtn" type="checkbox" />
+                      <span class="lever"></span>
+                      YES
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    id="updateUserBtn"
+                    class="btn-floating btn-large waves-effect waves-light red"
+                    ><i class="material-icons">add</i></a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Wren S</td>
+                <td>3</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      NO
+                      <input id="adminBtn" type="checkbox" />
+                      <span class="lever"></span>
+                      YES
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    id="updateUserBtn"
+                    class="btn-floating btn-large waves-effect waves-light red"
+                    ><i class="material-icons">add</i></a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Melissa L</td>
+                <td>4</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      NO
+                      <input id="adminBtn" type="checkbox" />
+                      <span class="lever"></span>
+                      YES
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <a
+                    id="updateUserBtn"
+                    class="btn-floating btn-large waves-effect waves-light red"
+                    ><i class="material-icons">add</i></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>

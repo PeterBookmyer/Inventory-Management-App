@@ -1,16 +1,66 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    testing 1.2.3...
-    <div>
-    {{body}}
-    </div>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopKeep App</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="topNav nav-extended blue darken-4">
+      <div class="nav-wrapper">
+        <h1 class="h1El"></h1>
+        <div class="right responsive-img">
+          <img class="circle" src="./images/My project.jpg" alt="logo" />
+        </div>
+      </div>
+      <div class="nav-content navEl">
+        <ul class="tabs tabs-transparent">
+          <li id="homeBtn" class="tab"><a href="#test3">Home</a></li>
+          <li class="tab">
+            <a
+              href="file:/Users/peterbookmyer/Desktop/Front-End-Inventory-Mgmt/project-2-handlebars/inventory.handlebar.html"
+              >View Inventory</a
+            >
+          </li>
+          <li class="tab">
+            <a
+              href="file:/Users/peterbookmyer/Desktop/Front-End-Inventory-Mgmt/project-2-handlebars/users.handlebar.html"
+              >View Users</a
+            >
+          </li>
+          <li class="tab">
+            <a
+              href="file:///Users/peterbookmyer/Desktop/Front-End-Inventory-Mgmt/project-2-handlebars/main.handlebar.html"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {{{body}}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./js/inventory.script.js"></script>
+    <script src="./js/update.inv.script.js"></script>
+    <script src="./js/update.users.script.js"></script>
+    <script src="./js/users.script.js"></script>
+    <script src="./js/main.script.js"></script>
+  </body>
 </html>
