@@ -1,0 +1,2 @@
+
+{{inventoryItem.name}}, {{inventoryItem.pricing.sales_price}}, {{inventoryItem.pricing.order_link}},
