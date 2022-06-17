@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Users } = require("../../models/");
-const withAuth = require("../../utils/auth");
 
 router.post("/login", async (req, res) => {
   try {
@@ -43,7 +42,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.post("/new", withAuth, async (req, res) => {
+router.post("/new", async (req, res) => {
   try {
     const newUser = await Users.create(req.body).then((user) => {
       return Users.afterCreate(newUser);
@@ -55,7 +54,7 @@ router.post("/new", withAuth, async (req, res) => {
     res.redirect("dashboard");
   }
 }),
-  router.put("/edit/:id", withAuth, async (req, res) => {
+  router.put("/edit/:id", async (req, res) => {
     try {
       const update = await Users.update(req.body, {
         where: { id: req.params.id },

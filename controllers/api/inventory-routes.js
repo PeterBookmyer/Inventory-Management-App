@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const withAuth = require("../../utils/auth");
 const { Pricing, Inventory, Users } = require("../../models");
 
 // endpoint for "/api/inventory"
 
 // add an inventory item
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const invData = await Inventory.create(req.body);
     // set inventory_id value frore pricing table
@@ -19,7 +18,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // update an inventory item
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     // update inventory table item
     const newInvData = await Inventory.update(req.body, {
