@@ -51,14 +51,8 @@ router.get("/users/:id", withAuth, async (req, res) => {
 
 router.get("/inventory", async (req, res) => {
   try {
-    const inventoryData = await Inventory.findAll({
-      include: [
-        {
-          model: Pricing,
-          attributes: ["cost", "sales_price", "order_link", "inventory_id"],
-        },
-      ],
-    // }); //commented out so that server can run
+    const inventoryData = await Inventory.findOne({
+
   });
   } catch (err) {
     console.log(err);
