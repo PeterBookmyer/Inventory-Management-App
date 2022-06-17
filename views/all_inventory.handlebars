@@ -77,6 +77,7 @@
               </div>
             </div>
           </div>
+
           <!-- INVENTORY TABLE -->
           <table class="highlight">
             <thead>
@@ -90,120 +91,7 @@
             </thead>
 
             <tbody>
-              <tr>
-                <td>Beans</td>
-                <td>34</td>
-                <td>$1.50</td>
-                <td>$4.50</td>
-                <td>
-                  <!-- update modal -->
-                  <a
-                    id="updateInvBtn"
-                    class="btn-floating btn-large waves-effect waves-light red"
-                    ><i class="material-icons">add</i></a
-                  >
-                  <div id="modalUpdateInv" class="modal">
-                    <div class="modal-content">
-                      <h4>Update Inventory Item</h4>
-                      <div class="row">
-                        <form class="col s12">
-                          <div class="row">
-                            <div class="input-field col s6">
-                              <input
-                                placeholder="Item Name"
-                                id="itemName"
-                                type="text"
-                                class="validate"
-                              />
-                              <label for="item_name"></label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s6">
-                              <input
-                                placeholder="Current Stock"
-                                id="currentStock"
-                                type="text"
-                                class="validate"
-                              />
-                              <label for="currentStock"></label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s6">
-                              <input
-                                placeholder="Item Cost"
-                                id="itemCost"
-                                type="text"
-                                class="validate"
-                              />
-                              <label for="itemCost"></label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s6">
-                              <input
-                                placeholder="Sale Price"
-                                id="salePrice"
-                                type="text"
-                                class="validate"
-                              />
-                              <label for="salePrice"></label>
-                              <div class="modal-footer">
-                                <a
-                                  class="addbtn modal-close waves-effect waves-light btn-large red"
-                                  href="#!"
-                                  ><i class="material-icons left">create</i
-                                  >Update Item
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Apples</td>
-                <td>12</td>
-                <td>$0.15</td>
-                <td>$1.50</td>
-                <td>
-                  <a
-                    id="updateInventoryBtn"
-                    class="btn-floating btn-large waves-effect waves-light red"
-                    ><i class="material-icons">add</i></a
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>Coffee Beans</td>
-                <td>17</td>
-                <td>$3.50</td>
-                <td>$6.50</td>
-                <td>
-                  <a
-                    id="updateInventoryBtn"
-                    class="btn-floating btn-large waves-effect waves-light red"
-                    ><i class="material-icons">add</i></a
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>Oranges</td>
-                <td>32</td>
-                <td>$2.50</td>
-                <td>$3.50</td>
-                <td>
-                  <a
-                    id="updateInventoryBtn"
-                    class="btn-floating btn-large waves-effect waves-light red"
-                    ><i class="material-icons">add</i></a
-                  >
-                </td>
-              </tr>
+              {{> invRow}}
             </tbody>
           </table>
         </div>

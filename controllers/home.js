@@ -8,6 +8,15 @@ router.get("/", async (req, res) => {
     console.log(err);
   }
 });
+
+router.get("/login", async (req, res) => {
+  try {
+    res.render("login");
+  } catch(err) {
+    console.log(err);
+  }
+})
+
 // get all users
 router.get("/users", async (req, res) => {
   try {
