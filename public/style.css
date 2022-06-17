@@ -1,0 +1,73 @@
+img {
+  height: 20%;
+  margin-right: 20px;
+}
+
+.h1El {
+  margin: 0%;
+  color: black;
+  text-align: left;
+}
+
+.topNav {
+  background-image: url("./images/360_F_279846296_1dEp57xWW86PPhQjoj2oBwHpn419BSH2.jpeg");
+}
+
+.logInMsg {
+  text-align: center;
+}
+
+.tablediv {
+  display: flex !important;
+  flex-direction: row;
+}
+
+table {
+  border: solid black !important;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.addbtn {
+  margin-left: 5%;
+}
+
+#modalAddUser {
+  z-index: 5;
+}
+
+body {
+  font-family: "Lato", "serif";
+}
+
+a {
+  font-size: 20px !important;
+  color: white !important;
+}
+
+a:hover {
+  color: grey !important;
+}
+
+h3 {
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+}
+
+.cardimg {
+  opacity: 70%;
+}
+
+.card-content {
+  text-align: center;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-content {
+    display: none;
+  }
+}
