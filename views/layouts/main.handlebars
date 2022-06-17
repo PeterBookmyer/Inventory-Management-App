@@ -31,24 +31,26 @@
       </div>
       <div class="nav-content navEl">
         <ul class="tabs tabs-transparent">
-          <li id="homeBtn" class="tab"><a href="#test3">Home</a></li>
+          <li id="homeBtn" class="tab"><a href="./">Home</a></li>
           <li class="tab">
             <a
-              href="file:/Users/peterbookmyer/Desktop/Front-End-Inventory-Mgmt/project-2-handlebars/inventory.handlebar.html"
+              href="./inventory"
               >View Inventory</a
             >
           </li>
           <li class="tab">
             <a
-              href="file:/Users/peterbookmyer/Desktop/Front-End-Inventory-Mgmt/project-2-handlebars/users.handlebar.html"
+              href="./users"
               >View Users</a
             >
           </li>
           <li class="tab">
-            <a
-              href="file:///Users/peterbookmyer/Desktop/Front-End-Inventory-Mgmt/project-2-handlebars/main.handlebar.html"
-              >Logout</a
-            >
+            <form method="post" action="./api/users/logout" class="inline">
+              <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+              <button type="submit" name="submit_param" value="submit_value" class="link-button">
+              Logout
+              </button>
+            </form>
           </li>
         </ul>
       </div>
