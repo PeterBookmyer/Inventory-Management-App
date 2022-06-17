@@ -5,20 +5,20 @@ const withAuth = require("../utils/auth");
 router.get("/users", withAuth, async (req, res) => {
   try {
     const userData = await Users.findAll({
-      include: [
-        {
-          model: Users,
-          attributes: [
-            "first_name",
-            "last_name",
-            "email",
-            "username",
-            "password",
-            "admin",
-          ],
-        },
-      ],
+      // include: [
+      //   {
+      //     attributes: [
+      //       "first_name",
+      //       "last_name",
+      //       "email",
+      //       "username",
+      //       "password",
+      //       "admin",
+      //     ],
+      //   },
+      // ],
     });
+    console.table(userData);
     res.render(userData, {
       layout: "dashboard",
       Users,
@@ -33,7 +33,6 @@ router.get("/users/:id", withAuth, async (req, res) => {
       where: { id: req.params.id },
       include: [
         {
-          model: Users,
           attributes: [
             "first_name",
             "last_name",
