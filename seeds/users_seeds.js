@@ -7,7 +7,7 @@ const userData = [
     admin: true,
     email: "melissamlycan@gmail.com",
     username: "MelissaLycan",
-    password: "password",
+    password: "$2b$10$QGqNsQpIcATb0Y6q0Sss.e/h3stotofskxd.nMTm3WUzkEYbk2/Bi",
   },
   {
     first_name: "Casey",
@@ -15,7 +15,7 @@ const userData = [
     admin: true,
     email: "caseysmiller@yahoo.com",
     username: "CaseyMiller",
-    password: "password",
+    password: "$2b$10$QGqNsQpIcATb0Y6q0Sss.e/h3stotofskxd.nMTm3WUzkEYbk2/Bi",
   },
   {
     first_name: "Peter",
@@ -23,7 +23,7 @@ const userData = [
     admin: true,
     email: "peterbookmeyer@gmail.com",
     username: "PeterBookmeyer",
-    password: "password",
+    password: "$2b$10$QGqNsQpIcATb0Y6q0Sss.e/h3stotofskxd.nMTm3WUzkEYbk2/Bi",
   },
   {
     first_name: "Wren",
@@ -31,7 +31,7 @@ const userData = [
     admin: true,
     email: "wrensanchez@gmail.com",
     username: "WrenSanchez",
-    password: "password",
+    password: "$2b$10$QGqNsQpIcATb0Y6q0Sss.e/h3stotofskxd.nMTm3WUzkEYbk2/Bi",
   },
   {
     first_name: "Ben",
@@ -39,7 +39,7 @@ const userData = [
     admin: false,
     email: "BMacho@gmail.com",
     username: "BenMacho",
-    password: "password",
+    password: "$2b$10$QGqNsQpIcATb0Y6q0Sss.e/h3stotofskxd.nMTm3WUzkEYbk2/Bi",
   },
 ];
 

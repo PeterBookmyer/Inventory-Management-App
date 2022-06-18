@@ -7,7 +7,7 @@ const { Pricing, Inventory, Users } = require("../../models");
 router.post("/", async (req, res) => {
   try {
     const invData = await Inventory.create(req.body);
-    // set inventory_id value frore pricing table
+    // set inventory_id value from pricing table
     req.body.inventory_id = invData.dataValues.id;
     // add pricing row with association to new item
     const priceData = await Pricing.create(req.body);

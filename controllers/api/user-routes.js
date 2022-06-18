@@ -1,18 +1,23 @@
 const router = require("express").Router();
 const { Users } = require("../../models/");
+const bcrypt = require("bcrypt");
+
+
+// endpoint for /api/users/
 
 router.post("/login", async (req, res) => {
   try {
-    const userData = await Users.findOne({ where: { email: req.body.email } });
-
+    const userData = await Users.findOne({ where: { username: req.body.username } });
+    // console.log(userData);
     if (!userData) {
       res
         .status(400)
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
-
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await bcrypt.compare(req.body.password, userData.password);
+    console.log('hello:', userData.password);
+    // const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -24,10 +29,10 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -42,18 +47,16 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// add new user
 router.post("/new", async (req, res) => {
   try {
-    const newUser = await Users.create(req.body).then((user) => {
-      return Users.afterCreate(newUser);
-    });
-    res.render(newUser, {
-      layout: "dashboard",
-    });
+    const newUser = await Users.create(req.body);
+    res.status(200).json(req.body);
   } catch (err) {
-    res.redirect("dashboard");
+    res.status(400).json(err);
   }
-}),
+});
+
   router.put("/edit/:id", async (req, res) => {
     try {
       const update = await Users.update(req.body, {

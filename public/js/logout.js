@@ -12,8 +12,9 @@ const logOut = async function() {
         alert('Failed to log out');
     }
 };
-
-logOutEl.addEventListener("click", logOut);
+if (logOutEl) {
+    logOutEl.addEventListener("click", logOut);
+};
 
 
 
