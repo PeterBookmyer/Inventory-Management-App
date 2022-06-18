@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 
 // endpoint for /api/users/
 
+// login route
 router.post("/login", async (req, res) => {
   try {
     const userData = await Users.findOne({ where: { username: req.body.username } });
@@ -37,6 +38,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// logout route
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -53,6 +55,7 @@ router.post("/new", async (req, res) => {
     const newUser = await Users.create(req.body);
     res.status(200).json(req.body);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

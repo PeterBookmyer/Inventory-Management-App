@@ -19,3 +19,39 @@ window.onclick = function (event) {
     modalAddUser.style.display = "none";
   }
 };
+
+
+// post form info on submit
+const userFormEl = document.querySelector('#add-user-form');
+const userFormHandler = async function(event) {
+    event.preventDefault();
+
+    const firstNameEl = document.querySelector('#firstNameInput');
+    const lastNameEl = document.querySelector('#lastNameInput');
+    const emailEl = document.querySelector('#emailInput');
+    const adminEl = document.querySelector('#adminBtnInput');
+    const usernameEl = document.querySelector('#usernameInput');
+    const passwordEl = document.querySelector('#passwordInput'); 
+    const response = await fetch('/api/users/new', {
+        method: 'POST',
+        body: JSON.stringify({
+            first_name: firstNameEl.value,
+            last_name: lastNameEl.value,
+            email: emailEl.value,
+            admin: adminEl.checked,
+            username: usernameEl.value,
+            password: passwordEl.value
+        }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+    document.location.replace('/users');
+    } else {
+    alert('Please fill in all required fields');
+    }
+};
+
+if (userFormEl) {
+    userFormEl.addEventListener('submit', userFormHandler);
+};

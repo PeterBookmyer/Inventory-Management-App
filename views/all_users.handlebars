@@ -15,33 +15,77 @@
             <div class="modal-content">
               <h4>Add User</h4>
               <div class="row">
-                <form class="col s12">
+                <form id="add-user-form" class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
                       <input
                         placeholder="First Name"
-                        id="firstName"
+                        id="firstNameInput"
                         type="text"
                         class="validate"
                       />
-                      <label for="user_name"></label>
+                      <label for="firstNameInput"></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
                       <input
                         placeholder="Last Name"
-                        id="lastName"
+                        id="lastNameInput"
                         type="text"
                         class="validate"
                       />
-                      <label for="salePrice"></label>
+                      <label for="lastNameInput"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="email@domain.com"
+                        id="emailInput"
+                        type="email"
+                        class="validate"
+                      />
+                      <label for="emailInput"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="switch col s6">
+                      <label>
+                        <p>Admin:</p>
+                        NO
+                        <input id="adminBtnInput" type="checkbox" />
+                        <span class="lever"></span>
+                        YES
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Username"
+                        id="usernameInput"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="usernameInput"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Password"
+                        id="passwordInput"
+                        type="password"
+                        class="validate"
+                      />
+                      <label for="passwordInput"></label>
                       <div class="modal-footer">
-                        <a
+                        <button
                           class="addUserBtn modal-close waves-effect waves-light btn-large red"
                           href="#!"
                           ><i class="material-icons left">create</i>Add User
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
