@@ -21,7 +21,7 @@
             <div class="modal-content">
               <h4>Add Inventory Item</h4>
               <div class="row">
-                <form class="col s12">
+                <form id="add-item-form" class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
                       <input
@@ -47,6 +47,28 @@
                   <div class="row">
                     <div class="input-field col s6">
                       <input
+                        placeholder="Image Link"
+                        id="imageLink"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="imageLink"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Order Link"
+                        id="orderLink"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="orderLink"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
                         placeholder="Item Cost"
                         id="itemCost"
                         type="text"
@@ -65,11 +87,11 @@
                       />
                       <label for="salePrice"></label>
                       <div class="modal-footer">
-                        <a
+                        <button
                           class="addbtn modal-close waves-effect waves-light btn-large red"
                           href="#!"
                           ><i class="material-icons left">create</i>Add Item
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
