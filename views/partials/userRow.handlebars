@@ -14,10 +14,11 @@
                     </div>
                 </td>
                 <td>
-                    <a
+                    <button
+                        {{#unless ../adminPriv}}disabled{{/unless}}
                         id="updateUserBtn"
                         class="btn-floating btn-large waves-effect waves-light red"
-                        ><i class="material-icons">add</i></a
+                        ><i class="material-icons">add</i></button
                     >
                     <div id="modalUpdateUser" class="modal">
                         <div class="modal-content">
