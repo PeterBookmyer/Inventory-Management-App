@@ -4,6 +4,8 @@
         <div class="tablediv">
           <!-- BUTTON TO ACTIVATE ADD USER MODAL -->
           <button
+            {{!-- disable add user for non admins --}}
+            {{#unless adminPriv}}disabled{{/unless}}
             data-target="modalAddUser"
             class="btn addbtn modal-trigger waves-effect waves-light btn-large red"
           >
