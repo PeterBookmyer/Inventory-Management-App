@@ -40,6 +40,7 @@ router.get("/users", async (req, res) => {
         allUsers,
         loggedIn: req.session.logged_in,
         adminPriv: req.session.adminPriv,
+        userId: req.session.user_id,
       });
     } else {
       res.render("login", {

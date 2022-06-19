@@ -15,7 +15,9 @@
                 </td>
                 <td>
                     <button
-                        {{#unless ../adminPriv}}disabled{{/unless}}
+                        {{#ifCond ../userId "!=" id}}
+                            {{#unless ../adminPriv}}disabled{{/unless}}
+                        {{/ifCond}}
                         id="updateUserBtn"
                         class="btn-floating btn-large waves-effect waves-light red"
                         ><i class="material-icons">add</i></button
