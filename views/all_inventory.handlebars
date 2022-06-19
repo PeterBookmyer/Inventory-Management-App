@@ -101,60 +101,82 @@
           </div>
 
           {{!-- update modal --}}
-          <div id="modalUpdateInv" class="modal modalUpdateInv">
+          <div id="modalUpdateInv" class="modal">
             <div class="modal-content">
               <h4>Update Inventory Item</h4>
               <div class="row">
-                <form class="col s12">
+                <form id="update-item-form" class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
                       <input
                         placeholder="Item Name"
-                        id="itemName"
+                        id="itemNameUpdate"
                         type="text"
                         class="validate"
                       />
-                      <label for="item_name"></label>
+                      <label for="itemNameUpdate"></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
                       <input
                         placeholder="Current Stock"
-                        id="currentStock"
+                        id="currentStockUpdate"
                         type="text"
                         class="validate"
                       />
-                      <label for="currentStock"></label>
+                      <label for="currentStockUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Image Link"
+                        id="imageLinkUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="imageLinkUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Order Link"
+                        id="orderLinkUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="orderLinkUpdate"></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
                       <input
                         placeholder="Item Cost"
-                        id="itemCost"
+                        id="itemCostUpdate"
                         type="text"
                         class="validate"
                       />
-                      <label for="itemCost"></label>
+                      <label for="itemCostUpdate"></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
                       <input
                         placeholder="Sale Price"
-                        id="salePrice"
+                        id="salePriceUpdate"
                         type="text"
                         class="validate"
                       />
-                      <label for="salePrice"></label>
+                      <label for="salePriceUpdate"></label>
                       <div class="modal-footer">
-                        <a
+                        <button
                           class="addbtn modal-close waves-effect waves-light btn-large red"
                           href="#!"
                           ><i class="material-icons left">create</i
                           >Update Item
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
