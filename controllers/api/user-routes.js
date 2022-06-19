@@ -64,14 +64,13 @@ router.post("/new", async (req, res) => {
 router.put("/edit/:id", async (req, res) => {
   try {
     const update = await Users.update(req.body, {
-      where: { id: req.params.id },
+      where: { 
+        id: req.params.id, 
+      },
     });
-    res.render(update, {
-      layout: "dashboard",
-      post,
-    });
+    res.status(200).json(update);
   } catch (err) {
-    res.redirect("login");
+    res.status(400).json(err);
   }
 });
 
