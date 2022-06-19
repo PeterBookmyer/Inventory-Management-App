@@ -19,3 +19,4 @@ window.onclick = function (event) {
     modalUpdateInv.style.display = "none";
   }
 };
+

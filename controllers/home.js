@@ -6,6 +6,7 @@ router.get("/", async (req, res) => {
   try {
     res.render("home", {
       loggedIn: req.session.logged_in,
+      adminPriv: req.session.admin,
     });
   } catch (err) {
     console.log(err);
@@ -38,6 +39,8 @@ router.get("/users", async (req, res) => {
       res.render("all_users", {
         allUsers,
         loggedIn: req.session.logged_in,
+        adminPriv: req.session.adminPriv,
+        userId: req.session.user_id,
       });
     } else {
       res.render("login", {

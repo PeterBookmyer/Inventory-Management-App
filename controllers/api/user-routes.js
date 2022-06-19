@@ -5,10 +5,10 @@ const bcrypt = require("bcrypt");
 
 // endpoint for /api/users/
 
+// login route
 router.post("/login", async (req, res) => {
   try {
     const userData = await Users.findOne({ where: { username: req.body.username } });
-    // console.log(userData);
     if (!userData) {
       res
         .status(400)
@@ -29,6 +29,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.adminPriv = userData.admin;
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
@@ -37,6 +38,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// logout route
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -53,22 +55,24 @@ router.post("/new", async (req, res) => {
     const newUser = await Users.create(req.body);
     res.status(200).json(req.body);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-  router.put("/edit/:id", async (req, res) => {
-    try {
-      const update = await Users.update(req.body, {
-        where: { id: req.params.id },
-      });
-      res.render(update, {
-        layout: "dashboard",
-        post,
-      });
-    } catch (err) {
-      res.redirect("login");
-    }
-  });
+// update user
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const update = await Users.update(req.body, {
+      where: { id: req.params.id },
+    });
+    res.render(update, {
+      layout: "dashboard",
+      post,
+    });
+  } catch (err) {
+    res.redirect("login");
+  }
+});
 
 module.exports = router;
