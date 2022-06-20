@@ -1,0 +1,133 @@
+<main>
+    <div class="row">
+        <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card hoverable ">
+                <div class="card-action blue-grey darken-3 white-text">
+                    <h3>{{user.first_name}} {{user.last_name}}</h3>
+                    {{#if user.admin}}<h5 class="center-align">Adminstrator</h5>{{/if}}
+                </div>
+                <div class="card-content left-align">
+                    <h5>User ID: {{user.id}}</h5>
+                    <div class="divider"></div>
+                    <h5>Username: {{user.username}}</h5>
+                    <div class="divider"></div>
+                    <h5>Email: {{user.email}}</h5>
+                </div>
+                <div class="card-action blue-grey darken-3 center-align">
+                    <div class="row">
+                        <div class="col s6">
+                            <button
+                                {{!-- disable update user for non admins unless is self --}}
+                                {{#ifCond userId "!=" user.id}}
+                                    {{#unless adminPriv}}disabled{{/unless}}
+                                {{/ifCond}}
+                                id="updateUserBtn{{user.id}}"
+                                class="btn addbtn hoverable waves-effect waves-light btn-large red updateUserBtn"
+                                >
+                                <i class="material-icons left">edit</i>
+                                Update
+                            </button>
+                        </div>
+                        <div class="col s6">
+                            <button
+                                {{!-- disable delete user for non admins --}}
+                                {{#ifCond userId "!=" user.id}}
+                                    {{#unless adminPriv}}disabled{{/unless}}
+                                {{/ifCond}}
+                                id="deleteUserButton{{user.id}}"
+                                class="btn addbtn hoverable waves-effect waves-light btn-large red deleteUserButton"
+                                >
+                                <i class="material-icons left">delete</i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalUpdateUser" class="modal">
+        <div class="modal-content">
+            <h4>Update User</h4>
+        <div class="row">
+        <form id="user-update-form" class="col s12">
+            <div class="row">
+            <div class="input-field col s6">
+                <input
+                placeholder="First Name"
+                id="firstNameUpdate"
+                type="text"
+                class="validate"
+                />
+                <label for="firstNameUpdate"></label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s6">
+                <input
+                placeholder="Last Name"
+                id="lastNameUpdate"
+                type="text"
+                class="validate"
+                />
+                <label for="lastNameUpdate"></label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s6">
+                <input
+                placeholder="email@domain.com"
+                id="emailUpdate"
+                type="email"
+                class="validate"
+                />
+                <label for="emailUpdate"></label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="switch col s6">
+                <label>
+                <p>Admin:</p>
+                NO
+                <input id="adminBtnUpdate" type="checkbox" checked/>
+                <span class="lever"></span>
+                YES
+                </label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s6">
+                <input
+                placeholder="Username"
+                id="usernameUpdate"
+                type="text"
+                class="validate"
+                />
+                <label for="usernameUpdate"></label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s6">
+                <input
+                placeholder="Password"
+                id="passwordUpdate"
+                type="password"
+                class="validate"
+                />
+                <label for="passwordUpdate"></label>
+                <div class="modal-footer">
+                <button
+                    class="addUserBtn modal-close waves-effect waves-light btn-large red"
+                    {{!-- href="#!" --}}
+                    ><i class="material-icons left">create</i>Update User
+                </button>
+                </div>
+            </div>
+            </div>
+        </form>
+
+        </div>
+        </div>
+    </div>
+</main>

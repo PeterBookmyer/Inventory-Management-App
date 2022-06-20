@@ -32,6 +32,10 @@ table {
   margin-left: 5%;
 }
 
+.user-link {
+  color: black !important;
+}
+
 #modalAddUser {
   z-index: 5;
 }

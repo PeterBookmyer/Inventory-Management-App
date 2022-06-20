@@ -28,7 +28,7 @@ router.get("/login", async (req, res) => {
   } catch(err) {
     console.log(err);
   }
-})
+});
 
 // all users page
 router.get("/users", async (req, res) => {
@@ -57,14 +57,14 @@ router.get("/users", async (req, res) => {
 router.get("/users/:id", async (req, res) => {
   try {
     if (req.session.logged_in) {
-      const oneUser = await Users.findOne({
-        where: { id: req.params.id },
-      });
+      const oneUser = await Users.findByPk(req.params.id);
   
       const user = oneUser.get({ plain: true });
-      res.render("one_user", {
+      res.render("oneUser", {
         user,
         loggedIn: req.session.logged_in,
+        adminPriv: req.session.adminPriv,
+        userId: req.session.user_id,
       });
     } else {
       res.render("login", {
@@ -75,7 +75,7 @@ router.get("/users/:id", async (req, res) => {
     console.log(err);
     res.status(400).json(err);
   }
-}),
+});
 
 // all inventory page
 router.get("/inventory", async (req, res) => {
