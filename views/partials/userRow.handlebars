@@ -7,7 +7,7 @@
             <div class="switch">
                 <label>
                     NO
-                    <input {{#unless ../adminPriv}}disabled{{/unless}} id="adminBtn" type="checkbox" {{#if admin}}checked{{/if}} />
+                    <input {{#unless ../adminPriv}}disabled{{/unless}} class="user-admin-toggle" type="checkbox" {{#if admin}}checked{{/if}} id="user-admin-toggle{{id}}" />
                     <span class="lever"></span>
                     YES
                 </label>

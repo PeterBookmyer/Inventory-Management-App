@@ -83,3 +83,40 @@ if (userUpdateFormEl) {
     userUpdateFormEl.addEventListener('submit', userUpdateFormHandler);
 };
 
+// switch user admin status when changing toggle
+const userUpdateAdminEl = document.getElementsByClassName("user-admin-toggle");
+//declare id variable
+let userAdminIdUpdate = 0;
+//set click listener for each toggle
+document.addEventListener("DOMContentLoaded", function () {
+  // onclick for each userUpdateAdminEl
+    for (i=0; i < userUpdateAdminEl.length; i++) {
+      userUpdateAdminEl[i].addEventListener('click', userAdminUpdateHandler);
+    };
+  });
+  
+const userAdminUpdateHandler = async function(event) {
+  event.preventDefault();
+  userAdminIdUpdate = this.id.match(/[0-9]+$/)[0];
+  //create object containing admin key
+  const updateObj = {};
+  if (this.checked) {
+    updateObj.admin = true;
+  } else {
+    updateObj.admin = false;
+  };
+  
+  const response = await fetch(`/api/users/edit/${userAdminIdUpdate}`, {
+    method: 'PUT',
+    body: JSON.stringify(updateObj),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  
+  if (response.ok) {
+    document.location.replace('/users');
+  } else {
+    console.log(response.status);
+  }
+};
+
+
