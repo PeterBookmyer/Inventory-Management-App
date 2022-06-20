@@ -78,6 +78,7 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
+//delete user
 router.delete("/edit/:id", async (req, res) => {
   try {
     const deleteUser = await Users.destroy({

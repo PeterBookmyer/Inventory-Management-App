@@ -1,7 +1,10 @@
 {{#each allUsers as |users|}}
 
     <tr>
-        <td>{{last_name}}, {{first_name}}</td>
+        <td>
+            <a href="/users/{{id}}" class="user-link">
+            {{last_name}}, {{first_name}}</td>
+            </a>
         <td>{{id}}</td>
         <td>
             <div class="switch">

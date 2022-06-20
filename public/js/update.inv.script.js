@@ -4,7 +4,7 @@ var updateInvBtn = document.getElementsByClassName("updateInvBtn"); // array of 
 
 var modalClose = document.getElementsByClassName("modal-close")[0];
 
-var deleteInvBtn = document.getElementsById("deleteInv");
+var deleteInvBtn = document.getElementById("deleteInv");
 
 // modal vars
 var options = { startingTop: "0%" };
@@ -22,13 +22,16 @@ const deleteClickHandler = async function () {
   });
   document.location.deleteInvBtn(`/api/inventory/${this.id}`);
 };
+
 // allow all buttons to open the modal
+console.log('hmmmmm');
 document.addEventListener("DOMContentLoaded", function () {
   for (i = 0; i < updateInvBtn.length; i++) {
     updateInvBtn[i].onclick = function () {
       instance.open();
       // parse item id out of button's id
-      idUpdate = this.id.match(/[0-9]+$/)[0];
+      // idUpdate = this.id.match(/[0-9]+$/)[0];
+      console.log('Click!!!!');
     };
   }
 });

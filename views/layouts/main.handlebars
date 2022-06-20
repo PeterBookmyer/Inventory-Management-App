@@ -26,7 +26,7 @@
       <div class="nav-wrapper">
         <h1 class="h1El"></h1>
         <div class="right responsive-img">
-          <img class="circle" src="./images/My project.jpg" alt="logo" />
+          <img class="circle" src="/images/My project.jpg" alt="logo" />
         </div>
       </div>
       <div class="nav-content navEl">
@@ -34,25 +34,25 @@
           <li id="homeBtn" class="tab"><a href="./">Home</a></li>
           <li class="tab">
             <a
-              href="./inventory"
+              href="/inventory"
               >View Inventory</a
             >
           </li>
           <li class="tab">
             <a
-              href="./users"
+              href="/users"
               >View Users</a
             >
           </li>
           <li class="tab">
             {{#if loggedIn}}
             <a id = "logout-button"
-              href="./"
+              href="/"
               >Logout</a
             >
             {{else}}
             <a
-              href="./login"
+              href="/login"
               >Login</a
             >
             {{/if}}
@@ -66,6 +66,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="/js/inventory.script.js"></script>
     <script src="/js/update.inv.script.js"></script>
     <script src="/js/update.users.script.js"></script>

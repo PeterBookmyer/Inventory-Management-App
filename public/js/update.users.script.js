@@ -31,7 +31,7 @@ window.onclick = function (event) {
 };
 
 
-// PUT update form info on submit
+// PUT update user form info on submit
 const userUpdateFormEl = document.querySelector('#user-update-form');
 const userUpdateFormHandler = async function(event) {
     event.preventDefault();
@@ -112,6 +112,30 @@ const userAdminUpdateHandler = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
   
+  if (response.ok) {
+    document.location.replace('/users');
+  } else {
+    console.log(response.status);
+  }
+};
+
+//delete user
+const userDeleteEl = document.getElementsByClassName("deleteUserButton");
+//declare id variable
+let userDeleteID = 0;
+//set click listener for delete button
+document.addEventListener("DOMContentLoaded", function () {
+  // onclick for userDeleteEl
+  userDeleteEl[i].addEventListener('click', userDeleteHandler);
+  });
+  
+const userDeleteHandler = async function(event) {
+  event.preventDefault();
+  userDeleteID = this.id.match(/[0-9]+$/)[0];
+
+  const response = await fetch(`/api/users/edit/${userDeleteID}`, {
+    method: 'DELETE',
+  });
   if (response.ok) {
     document.location.replace('/users');
   } else {
