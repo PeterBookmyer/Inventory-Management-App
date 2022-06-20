@@ -38,4 +38,17 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.delete("/edit/:id", async (req, res) => {
+  try {
+    const deleteItem = await Inventory.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deleteItem);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
