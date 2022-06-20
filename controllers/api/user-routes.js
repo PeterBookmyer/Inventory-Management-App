@@ -2,21 +2,25 @@ const router = require("express").Router();
 const { Users } = require("../../models/");
 const bcrypt = require("bcrypt");
 
-
 // endpoint for /api/users/
 
 // login route
 router.post("/login", async (req, res) => {
   try {
-    const userData = await Users.findOne({ where: { username: req.body.username } });
+    const userData = await Users.findOne({
+      where: { username: req.body.username },
+    });
     if (!userData) {
       res
         .status(400)
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
-    const validPassword = await bcrypt.compare(req.body.password, userData.password);
-    console.log('hello:', userData.password);
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      userData.password
+    );
+    console.log("hello:", userData.password);
     // const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -64,13 +68,26 @@ router.post("/new", async (req, res) => {
 router.put("/edit/:id", async (req, res) => {
   try {
     const update = await Users.update(req.body, {
-      where: { 
-        id: req.params.id, 
+      where: {
+        id: req.params.id,
       },
     });
     res.status(200).json(update);
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.delete("/edit/:id", async (req, res) => {
+  try {
+    const deleteUser = await Users.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deleteUser);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
