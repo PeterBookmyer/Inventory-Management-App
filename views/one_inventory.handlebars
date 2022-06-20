@@ -1,0 +1,24 @@
+<main>
+    <section class="container row l12">
+    <h3>Inventory Item</h3>
+    <div class="col l6">
+    <img class="responsive-img" height="100%" src="{{inventoryItem.image_file}}"></img>
+    </div>
+    <div class="col l6 left">
+        <h3>{{inventoryItem.name}}</h3> 
+            <h4>In-Stock:{{inventoryItem.current_stock}}</h4>
+            <h4>Cost of Goods Sold: {{inventoryItem.pricing.cost}}</h4>
+            <h4>Sales Price: {{inventoryItem.pricing.sales_price}}</h4>
+            <h4>ReOrder Link: {{inventoryItem.pricing.order_link}}</h4>
+    
+    <button
+            data-target="deleteInv"
+            class="btn m-20 deletebtn waves-effect waves-light btn-large red justify-center"
+          >
+            <i class="material-icons">delete</i>
+            Delete Item
+    </button>
+    </div>
+    </section>
+
+</main>
