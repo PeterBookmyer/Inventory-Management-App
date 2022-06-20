@@ -30,8 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateInvBtn[i].onclick = function () {
       instance.open();
       // parse item id out of button's id
-      // idUpdate = this.id.match(/[0-9]+$/)[0];
-      console.log('Click!!!!');
+      idUpdate = this.id.match(/[0-9]+$/)[0];
     };
   }
 });
