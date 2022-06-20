@@ -1,69 +1,29 @@
 {{#each allUsers as |users|}}
 
-            <tr>
-                <td>{{last_name}}, {{first_name}}</td>
-                <td>{{id}}</td>
-                <td>
-                    <div class="switch">
-                        <label>
-                            NO
-                            <input {{#unless ../adminPriv}}disabled{{/unless}} id="adminBtn" type="checkbox" {{#if admin}}checked{{/if}} />
-                            <span class="lever"></span>
-                            YES
-                        </label>
-                    </div>
-                </td>
-                <td>
-                    <button
-                        {{#ifCond ../userId "!=" id}}
-                            {{#unless ../adminPriv}}disabled{{/unless}}
-                        {{/ifCond}}
-                        id="updateUserBtn"
-                        class="btn-floating btn-large waves-effect waves-light red"
-                        ><i class="material-icons">add</i></button
-                    >
-                    <div id="modalUpdateUser" class="modal">
-                        <div class="modal-content">
-                            <h4>Update User</h4>
-                        <div class="row">
-                            <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                <input
-                                    placeholder="First"
-                                    id="firstName"
-                                    type="text"
-                                    class="validate"
-                                />
-                                <label for="first_name"></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                <input
-                                    placeholder="Last Name"
-                                    id="lastName"
-                                    type="text"
-                                    class="validate"
-                                />
-                                <label for="lastName"></label>
-                                <div class="modal-footer">
-                                    <a
-                                    class="addbtn modal-close waves-effect waves-light btn-large red"
-                                    href="#!"
-                                    ><i class="material-icons left">create</i
-                                    >Update User
-                                    </a>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+    <tr>
+        <td>{{last_name}}, {{first_name}}</td>
+        <td>{{id}}</td>
+        <td>
+            <div class="switch">
+                <label>
+                    NO
+                    <input {{#unless ../adminPriv}}disabled{{/unless}} id="adminBtn" type="checkbox" {{#if admin}}checked{{/if}} />
+                    <span class="lever"></span>
+                    YES
+                </label>
+            </div>
+        </td>
+        <td>
+            <button
+                {{!-- disble if logged in user is not admin unless the row is self --}}
+                {{#ifCond ../userId "!=" id}}
+                    {{#unless ../adminPriv}}disabled{{/unless}}
+                {{/ifCond}}
+                id="updateUserBtn{{id}}"
+                class="btn-floating btn-large waves-effect waves-light red updateUserBtn"
+                ><i class="material-icons">add</i></button
+            >
+        </td>
+    </tr>
 {{/each}}
 
