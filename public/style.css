@@ -31,7 +31,10 @@ table {
 .addbtn {
   margin-left: 5%;
 }
-
+.deletebtn {
+  margin-right: 5%;
+  margin-top: 5%;
+}
 #modalAddUser {
   z-index: 5;
 }
