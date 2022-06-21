@@ -124,10 +124,12 @@ const userDeleteEl = document.getElementsByClassName("deleteUserButton");
 //declare id variable
 let userDeleteID = 0;
 //set click listener for delete button
-document.addEventListener("DOMContentLoaded", function () {
-  // onclick for userDeleteEl
-  userDeleteEl[i].addEventListener('click', userDeleteHandler);
+if (userDeleteEl[0]) {
+  document.addEventListener("DOMContentLoaded", function () {
+    // onclick for userDeleteEl
+    userDeleteEl[0].addEventListener('click', userDeleteHandler);
   });
+};
   
 const userDeleteHandler = async function(event) {
   event.preventDefault();

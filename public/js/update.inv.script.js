@@ -24,7 +24,6 @@ const deleteClickHandler = async function () {
 };
 
 // allow all buttons to open the modal
-console.log('hmmmmm');
 document.addEventListener("DOMContentLoaded", function () {
   for (i = 0; i < updateInvBtn.length; i++) {
     updateInvBtn[i].onclick = function () {
