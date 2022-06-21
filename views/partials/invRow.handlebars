@@ -1,6 +1,10 @@
 {{#each allInventory as |inventory|}}
               <tr>
-                <td>{{name}}</td>
+                <td>
+                <a href="/inventory/{{id}}" class="user-link">
+                  {{name}}
+                </a>
+                </td>
                 <td>{{current_stock}}</td>
                 <td>{{pricing.cost}}</td>
                 <td>{{pricing.sales_price}}</td>
