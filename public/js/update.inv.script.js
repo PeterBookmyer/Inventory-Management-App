@@ -15,14 +15,6 @@ var instance = M.Modal.getInstance(modalUpdateInv);
 // id of clicked el
 let idUpdate = 0;
 
-//Event Listener for deleting an item
-const deleteClickHandler = async function () {
-  await fetch(`/api/inventory/${this.id}`, {
-    method: "DELETE",
-  });
-  document.location.deleteInv(`/api/inventory/${this.id}`);
-};
-
 // allow all buttons to open the modal
 document.addEventListener("DOMContentLoaded", function () {
   for (i = 0; i < updateInvBtn.length; i++) {
@@ -89,3 +81,28 @@ const itemUpdateFormHandler = async function (event) {
 if (itemUpdateFormEl) {
   itemUpdateFormEl.addEventListener("submit", itemUpdateFormHandler);
 }
+
+const itemDeleteEl = document.getElementById("deleteInv");
+//declare id variable
+let itemDeleteID = 0;
+//set click listener for delete button
+if (itemDeleteEl[0]) {
+  document.addEventListener("DOMContentLoaded", function () {
+    // onclick for itemDeleteEl
+    itemDeleteEl[0].addEventListener("click", deleteClickHandler);
+  });
+}
+
+//Event Listener for deleting an item
+const deleteClickHandler = async function (event) {
+  event.preventDefault();
+  itemDeleteID = this.id.match(/[0-9]+$/)[0];
+  await fetch(`/api/inventory/edit/${itemDeleteID}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    document.location.destroy(`/inventory/${this.id}`);
+  } else {
+    console.log(response.status);
+  }
+};

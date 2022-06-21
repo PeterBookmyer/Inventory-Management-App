@@ -15,13 +15,16 @@
           <div class="card-action">
             <div class="row center-align">
               <button
-                  id="deleteInv{{inventoryItem.id}}"
-                  class="btn col s12 m5 waves-effect waves-light btn-large red deletebtn"
+                  id="deleteInv {{inventoryItem.id}}"
+                  class="btn addbtn hoverable waves-effect waves-light btn-large red deletebtn deleteInv"
                 >
                   <i class="material-icons">delete</i>
                   Delete Item
               </button>
               <button
+              {{#ifCond userId "!=" user.id}}
+                {{#unless adminPriv}}disabled{{/unless}}
+                    {{/ifCond}}
                 id="updateInvBtn{{inventoryItem.id}}"
                 class="btn col s12 m5 waves-effect waves-light btn-large red updateOneInv updateInvBtn"
               >
