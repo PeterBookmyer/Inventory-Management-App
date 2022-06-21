@@ -40,6 +40,12 @@ table {
   margin-right: 5%;
   margin-top: 5%;
 }
+
+.updateOneInv {
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
 #modalAddUser {
   z-index: 5;
 }
