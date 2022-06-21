@@ -20,7 +20,7 @@ const deleteClickHandler = async function () {
   await fetch(`/api/inventory/${this.id}`, {
     method: "DELETE",
   });
-  document.location.deleteInvBtn(`/api/inventory/${this.id}`);
+  document.location.deleteInv(`/api/inventory/${this.id}`);
 };
 
 // allow all buttons to open the modal
