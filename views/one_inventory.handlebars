@@ -1,24 +1,112 @@
 <main>
-    <section class="container row l12">
-    <h3>Inventory Item</h3>
-    <div class="col l6">
-    <img class="responsive-img" height="100%" src="{{inventoryItem.image_file}}"></img>
+  <div class="row">
+    <div class="col s12 m10 l8 offset-m2 offset-l3">
+      <section class="card hoverable row l12">
+        <h3>Inventory Item</h3>
+        <div class="card-action col l6">
+          <img class="responsive-img" height="100%" src="{{inventoryItem.image_file}}"></img>
+        </div>
+        <div class="card-content col l6 left-align">
+          <h3>{{inventoryItem.name}}</h3> 
+          <h4>In-Stock:{{inventoryItem.current_stock}}</h4>
+          <h4>Cost of Goods Sold: {{inventoryItem.pricing.cost}}</h4>
+          <h4>Sales Price: {{inventoryItem.pricing.sales_price}}</h4>
+          <h4>ReOrder Link: {{inventoryItem.pricing.order_link}}</h4>
+      
+          <button
+              data-target="deleteInv"
+              class="btn m-20 deletebtn waves-effect waves-light btn-large red center-align"
+            >
+              <i class="material-icons">delete</i>
+              Delete Item
+          </button>
+        </div>
+      </section>
     </div>
-    <div class="col l6 left">
-        <h3>{{inventoryItem.name}}</h3> 
-            <h4>In-Stock:{{inventoryItem.current_stock}}</h4>
-            <h4>Cost of Goods Sold: {{inventoryItem.pricing.cost}}</h4>
-            <h4>Sales Price: {{inventoryItem.pricing.sales_price}}</h4>
-            <h4>ReOrder Link: {{inventoryItem.pricing.order_link}}</h4>
-    
-    <button
-            data-target="deleteInv"
-            class="btn m-20 deletebtn waves-effect waves-light btn-large red justify-center"
-          >
-            <i class="material-icons">delete</i>
-            Delete Item
-    </button>
-    </div>
-    </section>
+  </div>
+
+  <div id="modalUpdateInv" class="modal">
+            <div class="modal-content">
+              <h4>Update Inventory Item</h4>
+              <div class="row">
+                <form id="update-item-form" class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Item Name"
+                        id="itemNameUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="itemNameUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Current Stock"
+                        id="currentStockUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="currentStockUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Image Link"
+                        id="imageLinkUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="imageLinkUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Order Link"
+                        id="orderLinkUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="orderLinkUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Item Cost"
+                        id="itemCostUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="itemCostUpdate"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input
+                        placeholder="Sale Price"
+                        id="salePriceUpdate"
+                        type="text"
+                        class="validate"
+                      />
+                      <label for="salePriceUpdate"></label>
+                      <div class="modal-footer">
+                        <button
+                          class="addbtn modal-close waves-effect waves-light btn-large red"
+                          href="#!"
+                          ><i class="material-icons left">create</i
+                          >Update Item
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
 
 </main>
