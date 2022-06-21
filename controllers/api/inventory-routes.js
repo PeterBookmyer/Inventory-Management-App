@@ -40,6 +40,7 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/edit/:id", async (req, res) => {
   try {
+    console.log("hit the route");
     const deleteItem = await Inventory.destroy({
       where: {
         id: req.params.id,
