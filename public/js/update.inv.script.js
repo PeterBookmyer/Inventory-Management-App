@@ -82,11 +82,12 @@ if (itemUpdateFormEl) {
   itemUpdateFormEl.addEventListener("submit", itemUpdateFormHandler);
 }
 
-const itemDeleteEl = document.getElementById("deleteInv");
+const itemDeleteEl = document.getElementsByClassName("deleteInv");
 //declare id variable
+console.log(itemDeleteEl);
 let itemDeleteID = 0;
 //set click listener for delete button
-if (itemDeleteEl[0]) {
+if (itemDeleteEl) {
   document.addEventListener("DOMContentLoaded", function () {
     // onclick for itemDeleteEl
     itemDeleteEl[0].addEventListener("click", deleteClickHandler);
@@ -96,12 +97,14 @@ if (itemDeleteEl[0]) {
 //Event Listener for deleting an item
 const deleteClickHandler = async function (event) {
   event.preventDefault();
+  console.log(event);
   itemDeleteID = this.id.match(/[0-9]+$/)[0];
-  await fetch(`/api/inventory/edit/${itemDeleteID}`, {
+  const response = await fetch(`/api/inventory/edit/${itemDeleteID}`, {
     method: "DELETE",
   });
   if (response.ok) {
-    document.location.destroy(`/inventory/${this.id}`);
+    console.log(response.ok);
+    document.location.replace(`/inventory`);
   } else {
     console.log(response.status);
   }
