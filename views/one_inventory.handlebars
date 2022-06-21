@@ -1,7 +1,7 @@
 <main>
   <div class="row">
     <div class="col s12 m10 l8 offset-m2 offset-l3">
-      <section class="card hoverable row l12">
+      <section class="card hoverable row l12 card-action blue-grey darken-3 white-text">
         <h3>Inventory Item</h3>
         <div class="card-action col l6">
           <img class="responsive-img" height="100%" src="{{inventoryItem.image_file}}"></img>
@@ -12,14 +12,21 @@
           <h4>Cost of Goods Sold: {{inventoryItem.pricing.cost}}</h4>
           <h4>Sales Price: {{inventoryItem.pricing.sales_price}}</h4>
           <h4>ReOrder Link: {{inventoryItem.pricing.order_link}}</h4>
+          <div class="row s-5 center-align">
+            <button class="btn addbtn hoverable waves-effect waves-light btn-large red updateInvBtn">
+              <i class="material-icons left">edit</i>Update
+            </button>
       
-          <button
+            <button
               data-target="deleteInv"
               class="btn m-20 deletebtn waves-effect waves-light btn-large red center-align"
             >
               <i class="material-icons">delete</i>
               Delete Item
-          </button>
+            </button>
+
+          </div>
+            
         </div>
       </section>
     </div>

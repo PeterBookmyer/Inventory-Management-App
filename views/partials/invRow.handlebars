@@ -1,16 +1,17 @@
 {{#each allInventory as |inventory|}}
-              <tr>
-                <td>{{name}}</td>
-                <td>{{current_stock}}</td>
-                <td>{{pricing.cost}}</td>
-                <td>{{pricing.sales_price}}</td>
-                <td>
-                  <!-- update modal -->
-                  <a
-                    id="updateInvBtn{{id}}"
-                    class="btn-floating btn-large waves-effect waves-light red updateInvBtn"
-                    ><i class="material-icons">add</i></a
-                  >
-                </td>
-              </tr>
+  <tr>
+      <td>
+        <a href="/inventory/{{id}}" class="user-link">{{name}}</td>
+        </a>
+    <td>{{current_stock}}</td>
+    <td>{{pricing.cost}}</td>
+    <td>{{pricing.sales_price}}</td>
+    <td>
+      <!-- update modal -->
+      <a
+        id="updateInvBtn{{id}}"
+        class="btn-floating btn-large waves-effect waves-light red updateInvBtn"
+      ><i class="material-icons">add</i></a>
+    </td>
+  </tr>
 {{/each}}
